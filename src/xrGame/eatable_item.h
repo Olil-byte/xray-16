@@ -20,6 +20,20 @@ protected:
     float m_fWeightEmpty;
 
 public:
+    float m_fHealth;
+    float m_fPower;
+    float m_fSatiety;
+    float m_fRadiation;
+    float m_fWoundsHeal;
+    float m_fMaxPowerUp;
+    float m_fAlcohol;
+    //непонятная херь из структуры SMedicineInfluence, наверное под нож
+    float m_fTimeTotal;
+    float m_fTimeCurrent;
+    //
+    shared_str m_sUseSoundName;
+
+public:
     CEatableItem();
     virtual ~CEatableItem();
     virtual IFactoryObject* _construct();

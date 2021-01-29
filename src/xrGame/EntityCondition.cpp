@@ -11,6 +11,7 @@
 #include "Include/xrRender/Kinematics.h"
 #include "Common/object_broker.h"
 #include "ActorHelmet.h"
+#include "eatable_item.h"
 
 #define MAX_HEALTH 1.0f
 #define MIN_HEALTH -0.01f
@@ -596,15 +597,15 @@ void CEntityCondition::remove_links(const IGameObject* object)
     m_iWhoID = m_object->ID();
 }
 
-bool CEntityCondition::ApplyInfluence(const SMedicineInfluenceValues& V, const shared_str& sect)
+bool CEntityCondition::ApplyInfluence(const CEatableItem &object)
 {
-    ChangeHealth(V.fHealth);
-    ChangePower(V.fPower);
-    ChangeSatiety(V.fSatiety);
-    ChangeRadiation(V.fRadiation);
-    ChangeBleeding(V.fWoundsHeal);
-    SetMaxPower(GetMaxPower() + V.fMaxPowerUp);
-    ChangeAlcohol(V.fAlcohol);
+    ChangeHealth(object.m_fHealth);
+    ChangePower(object.m_fPower);
+    ChangeSatiety(object.m_fSatiety);
+    ChangeRadiation(object.m_fRadiation);
+    ChangeBleeding(object.m_fWoundsHeal);
+    SetMaxPower(GetMaxPower() + object.m_fMaxPowerUp);
+    ChangeAlcohol(object.m_fAlcohol);
     return true;
 }
 

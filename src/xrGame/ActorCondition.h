@@ -111,7 +111,7 @@ public:
     bool DisableSprint(SHit* pHDS);
     bool PlayHitSound(SHit* pHDS);
     float HitSlowmo(SHit* pHDS);
-    virtual bool ApplyInfluence(const SMedicineInfluenceValues& V, const shared_str& sect);
+    virtual bool ApplyInfluence(const CEatableItem& object)  override;
     virtual bool ApplyBooster(const SBooster& B, const shared_str& sect);
     float GetMaxPowerRestoreSpeed() const { return m_max_power_restore_speed; };
     float GetMaxWoundProtection() const { return m_max_wound_protection; };

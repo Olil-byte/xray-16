@@ -156,7 +156,7 @@ public:
 
     IC void SetCanBeHarmedState(bool CanBeHarmed) { m_bCanBeHarmed = CanBeHarmed; }
     IC bool CanBeHarmed() const { return OnServer() && m_bCanBeHarmed; };
-    virtual bool ApplyInfluence(const SMedicineInfluenceValues& V, const shared_str& sect);
+    virtual bool ApplyInfluence(const CEatableItem& object);
     virtual bool ApplyBooster(const SBooster& B, const shared_str& sect);
     void ClearWounds();
 

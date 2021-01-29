@@ -15,6 +15,7 @@
 #include "xrScriptEngine/script_callback_ex.h"
 #include "Common/object_broker.h"
 #include "Weapon.h"
+#include "eatable_item.h"
 
 #include "PDA.h"
 #include "ai/monsters/basemonster/base_monster.h"
@@ -789,31 +790,31 @@ float CActorCondition::HitSlowmo(SHit* pHDS)
     return ret;
 }
 
-bool CActorCondition::ApplyInfluence(const SMedicineInfluenceValues& V, const shared_str& sect)
+bool CActorCondition::ApplyInfluence(const CEatableItem& object)
 {
-    if (m_curr_medicine_influence.InProcess())
-        return false;
+    //if (m_curr_medicine_influence.InProcess())
+        //return false;
 
     if (m_object->Local() && m_object == Level().CurrentViewEntity())
     {
-        if (pSettings->line_exist(sect, "use_sound"))
+        if (object.m_sUseSoundName != nullptr);
         {
             if (m_use_sound._feedback())
                 m_use_sound.stop();
 
-            shared_str snd_name = pSettings->r_string(sect, "use_sound");
-            m_use_sound.create(snd_name.c_str(), st_Effect, sg_SourceType);
+            m_use_sound.create(object.m_sUseSoundName.c_str(), st_Effect, sg_SourceType);
             m_use_sound.play(NULL, sm_2D);
         }
     }
 
-    if (V.fTimeTotal < 0.0f)
-        return inherited::ApplyInfluence(V, sect);
+    //if (object.m_fTimeTotal < 0.0f)
+    return inherited::ApplyInfluence(object);
 
-    m_curr_medicine_influence = V;
-    m_curr_medicine_influence.fTimeCurrent = m_curr_medicine_influence.fTimeTotal;
+    //m_curr_medicine_influence = V;
+    //m_curr_medicine_influence.fTimeCurrent = m_curr_medicine_influence.fTimeTotal;
     return true;
 }
+
 bool CActorCondition::ApplyBooster(const SBooster& B, const shared_str& sect)
 {
     if (B.fBoostValue > 0.0f)
